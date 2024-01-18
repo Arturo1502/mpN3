@@ -9,7 +9,7 @@ function App() {
 
 
   const [categorias, setCategories] = useState();
-  const [filteredCategories, setFilteredCategories] = useState([]);
+  const [filteredCategories, setFilteredCategories] = useState();
   const [searchValue, setSearchValue] = useState();
 
   async function getData() {
@@ -20,6 +20,7 @@ function App() {
     /* setUsers(datajson); */
     setCategories(datajson);
     setFilteredCategories(datajson);
+    console.log(datajson[0].photo)
 
   }
 
@@ -54,13 +55,13 @@ function App() {
 
       <ul className="contenido ">
         {filteredCategories &&
-          filteredCategories.map((user,id) => (
+          filteredCategories.map((user) => (
 
             <Cards
-              key={id}
-
+              // key={id}
               img={user.photo}
               superHost={user.superHost}
+              beds={user.beds}
               type={user.type}
               rating={user.rating}
               title={user.title}
