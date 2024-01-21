@@ -10,7 +10,7 @@ export default function Cards({ img, superHost, type, beds, rating, title }) {
                     <span className={`${superHost} ? " superHost bg-transparent rounded-xl border border-solid border-stone-500 w-[120px] h-[28px] shrink-0 text-stone-500 text-sm/[10px]" : "false"}`}>SUPER HOST</span>
                     <p className="text-neutral-500">{`${superHost}` ? `${type}.${beds} beds` : `${type}`}</p>
                     <div className='flex items-center'>
-                        <img className='h-4' src='/public/star.svg' alt="star" />
+                        <img className='h-4' src='../../../public/star.svg' alt="star" />
                         <p>{rating}</p>
                     </div>
                 </div>
