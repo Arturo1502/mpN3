@@ -3,7 +3,16 @@
     padding: 2px 0 0 7px;
 }
 
-.false{
+.false {
     display: none;
 }
 
+.containerCards:hover {
+    .superHost {
+        background-color: #eb5757e5;
+        border: none;
+        color: white;
+        transition: 0.4s;
+    }
+
+}

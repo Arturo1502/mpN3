@@ -27,6 +27,7 @@ function App() {
     getData();
   }, []);
 
+  const [guests, setGuests] = useState('');
 
   const search = () => {
     const data = categorias.filter((categoria) =>
@@ -57,10 +58,10 @@ function App() {
 
       <ul className="contenido ">
         {filteredCategories &&
-          filteredCategories.map((user) => (
+          filteredCategories.map((user, id) => (
 
             <Cards
-              key={user.id}
+              key={id.id}
               img={user.photo}
               superHost={user.superHost}
               beds={user.beds}
