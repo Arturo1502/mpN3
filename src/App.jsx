@@ -6,7 +6,7 @@ import Cards from "./components/Cards";
 
 
 function App() {
-
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
 
   const [categorias, setCategories] = useState();
   const [filteredCategories, setFilteredCategories] = useState();
@@ -17,10 +17,9 @@ function App() {
 
     const datajson = await fetchData.json();
 
-    /* setUsers(datajson); */
     setCategories(datajson);
     setFilteredCategories(datajson);
-    console.log(datajson[0].photo)
+
 
   }
 
@@ -43,7 +42,10 @@ function App() {
         setSearchValue={(e) => setSearchValue(e.target.value)}
         search={search}
         img={Windbnb}
-
+        searchGuests={guests}
+        setSearchGuests={(e) => setGuests(e.target.value)}
+        isSearchVisible={isSearchVisible}
+        setIsSearchVisible={setIsSearchVisible}
       />
 
       <div className="title">
@@ -58,7 +60,7 @@ function App() {
           filteredCategories.map((user) => (
 
             <Cards
-              // key={id}
+              key={user.id}
               img={user.photo}
               superHost={user.superHost}
               beds={user.beds}
