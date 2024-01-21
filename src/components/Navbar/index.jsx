@@ -24,7 +24,7 @@ const Navbar = ({ img, searchValue, setSearchValue, search, searchGuests, setSea
                         <span className="min-w-12 text-[13px] pr-[12px]">Helsinki, Finland</span>  {/* hacerlo dinamico*/}
                         <span className="inputGuests border-l border-l-gray-100 min-w-[90px] text-xs ">Add Guests</span>
                         <div className="items-center flex text-red-400 pl-2 hover:text-sky-300 duration-300">
-                            <span className="">BUSCAR</span> {/* cambiar por un svg bonito de busqueda*/}
+                        <span className="material-symbols-outlined">search</span>
                         </div>
 
                     </div>
