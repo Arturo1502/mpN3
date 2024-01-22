@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import "./Navbar.css";
 import Modal from '../Modal'
 
-const Navbar = ({ img, searchValue, setSearchValue, search, searchGuests, setSearchGuests, abrirModal, setabrirModal }) => {
+const Navbar = ({ img, searchValue, setSearchValue, search, searchGuests, setsearchGuests, abrirModal, setabrirModal }) => {
 
 
     const clickClose = () => {
@@ -46,7 +46,7 @@ const Navbar = ({ img, searchValue, setSearchValue, search, searchGuests, setSea
                     search={search}
 
                     searchGuests={searchGuests}
-                    setSearchGuests={setSearchGuests}
+                    setsearchGuests={setsearchGuests}
                     onClickClose={clickClose}
                     handleCityClick={handleCityClick}
                 />

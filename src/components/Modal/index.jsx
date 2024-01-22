@@ -36,18 +36,18 @@ export default function Modal({ onClickClose, searchValue, setSearchValue, searc
                 </button>
 
                 <div className='inModal flex w-[1248px] h-14 top-24 left-24 rounded-2xl bg-white '>
-                    <input className='inputModal ' type="text" name="city" value={searchValue || ''} onChange={(e) => setSearchValue(e.target.value)} onClick={() => {
+                    <input className='inputModal ' type="text"  value={searchValue || ''} onChange={(e) => setSearchValue(e.target.value)} onClick={() => {
                         handleOpenModalCity();
                         handleCloseModalGuests();
                     }} placeholder='City' />
 
-                    <input type="number" className='inputModal' placeholder='Add Guests' value={searchGuests || ''} onChange={setSearchGuests} onClick={() => {
+                    <input type="text" className='inputModal transform hover:scale-110 transition duration-300 ease-in-out' placeholder='Add Guests' value={searchGuests || ''} onChange={setSearchGuests} onClick={() => {
                         handleCloseModalCity();
                         handleOpenModalGuests();
                     }} />
 
                     <div className='boxSearchModal'>
-                        <button type='button' className='w-32 h-14 top-24 left-[1084px] rounded-2xl flex bg-red-400 items-center justify-center  btnSearchModal hover:bg-red-600' onClick={() => {
+                        <button type='button' className='w-32 h-14 top-24 left-[1084px] rounded-2xl flex bg-red-400 items-center justify-center  btnSearchModal hover:bg-red-600 transform hover:scale-110 transition duration-300 ease-in-out' onClick={() => {
                             search();
                             onClickClose();
                         }}>
