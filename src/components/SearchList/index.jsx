@@ -27,7 +27,7 @@ const SearchList = ({ setSearchValue }) => {
         <>
             {data.map((city, i) => (
                 <ul key={i} className="list text-gray-500">
-                    <div className="flex items-center w-[410px] h-12 hover:bg-gray-200 hover:text-white duration-500 location cursor-pointer">
+                    <div className="flex items-center w-[410px] h-12 hover:bg-gray-50 hover:text-black duration-500 location cursor-pointer">
                         <li className='w-full flex items-center' onClick={() => handleCityClick(city)}>
                             <span className="material-symbols-outlined">location_on</span>
                             {city}
