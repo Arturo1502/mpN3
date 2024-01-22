@@ -1,26 +1,44 @@
-import React from "react";
-import './SearchList.css'
+import React, { useEffect, useState } from 'react';
+import { getData } from '../../App'
+import './SearchList.css';
 
+const SearchList = ({ setSearchValue }) => {
 
-export default function SearchList({ onClick }) {
-    const cities = ["Helsinki, Finland", "Turku, Finland", "Oulu, Finland", "Vaasa, Finland"];
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const datajson = await getData();
+                setData(datajson);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    const handleCityClick = (city) => {
+        setSearchValue(city);
+    };
 
     return (
         <>
-            <ul className="list flex flex-col text-gray-500 absolute left-[90px]">
-                {cities.map((city, index) => (
-                    <div
-                        key={index}
-                        className="flex items-center w-[410px] h-12 hover:bg-gray-200 hover:text-white duration-500 location cursor-pointer"
-                        onClick={() => onClick(city)}
-                    >
-                        <span className="material-symbols-outlined">location_on</span>
-                        <li>{city}</li>
+            {data.map((city, i) => (
+                <ul key={i} className="list text-gray-500">
+                    <div className="flex items-center w-[410px] h-12 hover:bg-gray-200 hover:text-white duration-500 location cursor-pointer">
+                        <li className='w-full flex items-center' onClick={() => handleCityClick(city)}>
+                            <span className="material-symbols-outlined">location_on</span>
+                            {city}
+                        </li>
+
                     </div>
-                ))}
-            </ul>
+
+                </ul>
+            ))}
         </>
     );
-}
-// arreglar el evento onclick
+};
 
+export default SearchList;

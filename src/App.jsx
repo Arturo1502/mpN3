@@ -4,49 +4,68 @@ import "./App.css";
 import Navbar from "./components/Navbar"
 import Cards from "./components/Cards";
 
+export async function getData() {
+  const fetchData = await fetch("stays.json");
+  const datajson = await fetchData.json();
+  const citys = Array.from(new Set(datajson.map((ciudad) => ciudad.city)));
+
+  return citys;
+}
 
 function App() {
-  const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const [abrirModal, setabrirModal] = useState(false);
 
-  const [categorias, setCategories] = useState();
-  const [filteredCategories, setFilteredCategories] = useState();
-  const [searchValue, setSearchValue] = useState();
+  const [categorias, setCategories] = useState([]);
+  const [filteredCategories, setFilteredCategories] = useState([]);
+
+  const [searchValue, setSearchValue] = useState("");
+
+  const [guests, setGuests] = useState("");
+
+  const [enlistarCiudad, setEnlistarCiudad] = useState("");
 
   async function getData() {
     const fetchData = await fetch("stays.json");
 
     const datajson = await fetchData.json();
-
     setCategories(datajson);
     setFilteredCategories(datajson);
 
+    const citys = Array.from(new Set(datajson.map((ciudad) => ciudad.city)));
 
+    setEnlistarCiudad(citys);
   }
 
   useEffect(() => {
     getData();
   }, []);
 
-  const [guests, setGuests] = useState('');
 
   const search = () => {
-    const data = categorias.filter((categoria) =>
-      categoria.city.toLowerCase().includes(searchValue.toLowerCase())
-    );
+    const data = categorias.filter((categoria) => {
+      const city =
+        categorias === "" ||
+        categoria.city.toLowerCase().includes(searchValue.toLowerCase());
 
+      const guestsFilter =
+        guests === "" || categoria.maxGuests >= parseInt(guests);
+      return city && guestsFilter;
+    });
     setFilteredCategories(data);
   };
+
   return (
     <>
       <Navbar
         searchValue={searchValue}
-        setSearchValue={(e) => setSearchValue(e.target.value)}
+        setSearchValue={setSearchValue}
         search={search}
-        img={Windbnb}
         searchGuests={guests}
-        setSearchGuests={(e) => setGuests(e.target.value)}
-        isSearchVisible={isSearchVisible}
-        setIsSearchVisible={setIsSearchVisible}
+        setsearchGuests={(e) => setGuests(e.target.value)}
+        img={Windbnb}
+        abrirModal={abrirModal}
+        setabrirModal={setabrirModal}
+        enlistarCiudad={enlistarCiudad}
       />
 
       <div className="title">
@@ -56,12 +75,12 @@ function App() {
         <span className="stays">12+ stays</span>
       </div>
 
-      <ul className="contenido ">
+      <ul className="contenido">
         {filteredCategories &&
-          filteredCategories.map((user, id) => (
+          filteredCategories.map((user) => (
 
             <Cards
-              key={id.id}
+              key={user.id}
               img={user.photo}
               superHost={user.superHost}
               beds={user.beds}

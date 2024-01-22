@@ -2,13 +2,17 @@ import React, { useState, useRef, useEffect } from "react";
 import "./Navbar.css";
 import Modal from '../Modal'
 
-const Navbar = ({ img, searchValue, setSearchValue, search, searchGuests, setSearchGuests, isSearchVisible, setIsSearchVisible }) => {
+const Navbar = ({ img, searchValue, setSearchValue, search, searchGuests, setSearchGuests, abrirModal, setabrirModal }) => {
 
 
     const clickClose = () => {
-        if (isSearchVisible) {
-            setIsSearchVisible(false);
+        if (abrirModal) {
+            setabrirModal(false);
         }
+    };
+
+    const handleCityClick = (city) => {
+        setSearchValue(city);
     };
 
 
@@ -18,20 +22,24 @@ const Navbar = ({ img, searchValue, setSearchValue, search, searchGuests, setSea
                 <img src={img} alt="logo windBNB" className="w-28 object-contain icono" />
 
                 {/* no te confundas esto forma parte del modal */}
-                <button className="transform hover:scale-110 transition duration-300 ease-in-out" type="button" onClick={() => setIsSearchVisible(!isSearchVisible)}>
+                <button className="transform hover:scale-110 transition duration-300 ease-in-out" type="button" onClick={() => setabrirModal(!abrirModal)}>
 
-                    <div className="inputs items-center flex min-h-11 rounded-2xl border border-solid border-gray-100 text-sm text-gray-200 hover:bg-gray-500 hover:border-gray-400 duration-300">
-                        <span className="min-w-12 text-[13px] pr-[12px]">Helsinki, Finland</span>  {/* hacerlo dinamico*/}
-                        <span className="inputGuests border-l border-l-gray-100 min-w-[90px] text-xs ">Add Guests</span>
+                    <div className="inputs items-center flex min-h-11 rounded-2xl border border-solid border-gray-100 text-sm text-gray-200  hover:border-gray-400 duration-300">
+
+                        <input className="min-w-12 text-[13px] pr-[12px]" value={searchValue || "City"} onChange={(e) => setSearchValue(e.target.value)} />
+
+                        <input className="inputGuests border-l border-l-gray-100 min-w-[90px] text-xs " value={searchGuests || "Add Guests"}/>
+
+
                         <div className="items-center flex text-red-400 pl-2 hover:text-sky-300 duration-300">
-                        <span className="material-symbols-outlined">search</span>
+                            <span className="material-symbols-outlined">search</span>
                         </div>
 
                     </div>
                 </button>
             </nav>
 
-            {isSearchVisible && (
+            {abrirModal && (
                 <Modal
                     searchValue={searchValue}
                     setSearchValue={setSearchValue}
@@ -40,6 +48,7 @@ const Navbar = ({ img, searchValue, setSearchValue, search, searchGuests, setSea
                     searchGuests={searchGuests}
                     setSearchGuests={setSearchGuests}
                     onClickClose={clickClose}
+                    handleCityClick={handleCityClick}
                 />
             )}
         </>

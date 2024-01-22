@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Guests.css";
 
-export default function Guests() {
+export default function Guests({setTotal}) {
     const [adults, setadults] = useState(0);
     const [children, setchildren] = useState(0);
 
@@ -24,6 +24,10 @@ export default function Guests() {
     const add = () => {
         setchildren(children + 1);
     };
+
+    useEffect(() => {
+        setTotal(adults + children);
+    }, [adults, children, setTotal]);
 
 
 
