@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import "./Navbar.css";
 import Modal from '../Modal'
 
-const Navbar = ({ img, searchValue, setSearchValue, search, searchGuests, setSearchGuests, abrirModal, setabrirModal }) => {
+const Navbar = ({ img, searchValue, setSearchValue, search, searchGuests, setSearchGuests, abrirModal, setabrirModal, total }) => {
 
 
     const clickClose = () => {
@@ -28,7 +28,7 @@ const Navbar = ({ img, searchValue, setSearchValue, search, searchGuests, setSea
 
                         <input className="min-w-12 text-[13px] pr-[12px]" value={searchValue || "City"} onChange={(e) => setSearchValue(e.target.value)} />
 
-                        <input className="inputGuests border-l border-l-gray-100 min-w-[90px] text-xs " value={searchGuests || "Add Guests"}/>
+                        <input className="inputGuests border-l border-l-gray-100 min-w-[90px] text-xs " value={searchGuests || total || "Add Guests"}/>
 
 
                         <div className="items-center flex text-red-400 pl-2 hover:text-sky-300 duration-300">

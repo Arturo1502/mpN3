@@ -3,6 +3,7 @@ import Windbnb from "/logo.svg";
 import "./App.css";
 import Navbar from "./components/Navbar"
 import Cards from "./components/Cards";
+import total from "./components/Guests";
 
 export async function getData() {
   const fetchData = await fetch("stays.json");
@@ -23,6 +24,8 @@ function App() {
   const [guests, setGuests] = useState("");
 
   const [enlistarCiudad, setEnlistarCiudad] = useState("");
+
+
 
   async function getData() {
     const fetchData = await fetch("stays.json");
@@ -66,6 +69,7 @@ function App() {
         abrirModal={abrirModal}
         setabrirModal={setabrirModal}
         enlistarCiudad={enlistarCiudad}
+        total={total}
       />
 
       <div className="title">
