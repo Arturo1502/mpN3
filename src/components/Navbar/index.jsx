@@ -24,7 +24,7 @@ const Navbar = ({ img, searchValue, setSearchValue, search, searchGuests, setSea
                 {/* no te confundas esto forma parte del modal */}
                 <button className="transform hover:scale-110 transition duration-300 ease-in-out" type="button" onClick={() => setabrirModal(!abrirModal)}>
 
-                    <div className="inputs items-center flex min-h-11 rounded-2xl border border-solid border-gray-100 text-sm text-gray-200  hover:border-gray-400 duration-300">
+                    <div className="inputs items-center flex min-h-9  rounded-2xl border border-solid border-gray-100 text-sm text-gray-200  hover:border-gray-400 duration-300">
 
                         <input className="min-w-12 text-[13px] pr-[12px]" value={searchValue || "City"} onChange={(e) => setSearchValue(e.target.value)} />
 

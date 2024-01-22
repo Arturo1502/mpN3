@@ -41,7 +41,7 @@ export default function Modal({ onClickClose, searchValue, setSearchValue, searc
                         handleCloseModalGuests();
                     }} placeholder='City' />
 
-                    <input type="text" className='inputModal transform hover:scale-110 transition duration-300 ease-in-out' placeholder='Add Guests' value={searchGuests || ''} onChange={setSearchGuests} onClick={() => {
+                    <input type="text" className='inputModal transform hover:scale-110 transition duration-300 ease-in-out' placeholder='Add Guests' value={searchGuests || total || ''} onChange={setSearchGuests} onClick={() => {
                         handleCloseModalCity();
                         handleOpenModalGuests();
                     }} />
