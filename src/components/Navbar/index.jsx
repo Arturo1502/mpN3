@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./Navbar.css";
-import Modal from './Modal'
+import Modal from '../Modal'
 
 const Navbar = ({ img, searchValue, setSearchValue, search, searchGuests, setSearchGuests, isSearchVisible, setIsSearchVisible }) => {
 

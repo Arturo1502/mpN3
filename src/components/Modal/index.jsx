@@ -1,15 +1,19 @@
 import React from 'react';
-import './Navbar.css';
+
 import cancel from '/cancel.svg';
+import Guests from '../Guests';
+import SearchList from '../SearchList';
 
 
 export default function Modal({ onClickClose, searchValue, setSearchValue, searchGuests, setSearchGuests, search }) {
     return (
         <>
             <div className='modal absolute w-full top-0 h-[450px] z-[1] bg-white' onClick={(e) => e.stopPropagation()}>
+
                 <button className='close text-gray-500 w-full h-[70px] flex  justify-end p-5' type='button' onClick={onClickClose}>
                     <img className='flex w-7 text-gray-500' src={cancel} alt="cancel" />
                 </button>
+                
                 <div className='inModal flex w-[1248px] h-14 top-24 left-24 rounded-2xl bg-white '>
                     <input className='inputModal ' type="text" name="city" value={searchValue || ''} onChange={setSearchValue} placeholder='City' />
 
@@ -22,7 +26,14 @@ export default function Modal({ onClickClose, searchValue, setSearchValue, searc
                         </button>
                     </div>
                 </div>
+                <Guests/>
+                <SearchList/>
+
             </div>
         </>
     );
+}
+
+export function Search(params) {
+    
 }

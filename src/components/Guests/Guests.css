@@ -1,0 +1,28 @@
+.adults {
+    margin: 25px 0px;
+}
+
+.children {
+    margin: 25px 0px;
+}
+
+.btn {
+    width: 23px;
+    height: 23px;
+    top: 244px;
+    left: 537px;
+    border-radius: 4px;
+    border: 1px solid #828282;
+    color: #828282;
+}
+
+.btn:hover {
+    border: 1px solid white;
+    background-color: #d8d8d8;
+    color: white;
+    transition: 0.4s;
+}
+
+.contador{
+    margin: 0px 10px;
+}  
