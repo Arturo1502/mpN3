@@ -5,7 +5,7 @@ import Guests from '../Guests';
 import SearchList from '../SearchList';
 
 
-export default function Modal({ onClickClose, searchValue, setSearchValue, searchGuests, setSearchGuests, search, handleCityClick }) {
+export default function Modal({ onClickClose, searchValue, setSearchValue, searchGuests, setSearchGuests, search }) {
 
     const [showModalCity, setshowModalCity] = useState(false);
     const [showModalGuests, setshowModalGuests] = useState(false);
@@ -36,7 +36,7 @@ export default function Modal({ onClickClose, searchValue, setSearchValue, searc
                 </button>
 
                 <div className='inModal flex w-[1248px] h-14 top-24 left-24 rounded-2xl bg-white '>
-                    <input className='inputModal ' type="text"  value={searchValue || ''} onChange={(e) => setSearchValue(e.target.value)} onClick={() => {
+                    <input className='inputModal transform hover:scale-110 transition duration-300 ease-in-out' type="text"  value={searchValue || ''} onChange={(e) => setSearchValue(e.target.value)} onClick={() => {
                         handleOpenModalCity();
                         handleCloseModalGuests();
                     }} placeholder='City' />

@@ -61,7 +61,7 @@ function App() {
         setSearchValue={setSearchValue}
         search={search}
         searchGuests={guests}
-        setsearchGuests={(e) => setGuests(e.target.value)}
+        setSearchGuests={(e) => setGuests(e.target.value)}
         img={Windbnb}
         abrirModal={abrirModal}
         setabrirModal={setabrirModal}
